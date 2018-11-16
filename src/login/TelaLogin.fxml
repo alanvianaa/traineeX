@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.chart.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="anchorpane" cacheHint="QUALITY" cacheShape="false" centerShape="false" focusTraversable="true" prefHeight="430.0" prefWidth="696.0" scaleShape="false" snapToPixel="false" style="-fx-background-color: #87cefa;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="login.ControladorLogin">
+   <cursor>
+      <Cursor fx:constant="CLOSED_HAND" />
+   </cursor>
+   <children>
+      <BorderPane layoutY="36.0" prefHeight="430.0" prefWidth="696.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <Pane prefHeight="93.0" prefWidth="696.0" style="-fx-background-color: #00cc29;" BorderPane.alignment="CENTER">
+               <children>
+                  <Label fx:id="label" layoutX="155.0" layoutY="36.0" text="Bem-Vindo ao sistema" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="57.0" fitWidth="200.0" layoutX="429.0" layoutY="18.0">
+                     <image>
+                        <Image url="@../img/treineeX.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+         </top>
+         <bottom>
+            <Pane prefHeight="40.0" prefWidth="696.0" style="-fx-background-color: #00cc40;" BorderPane.alignment="CENTER" />
+         </bottom>
+         <left>
+            <Pane prefHeight="297.0" prefWidth="298.0" style="-fx-border-color: #9999; -fx-background-color: #1111;" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fitHeight="297.0" fitWidth="300.0">
+                     <image>
+                        <Image url="@../img/user-icon.png" />
+                     </image>
+                  </ImageView>
+               </children></Pane>
+         </left>
+         <center>
+            <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label layoutX="14.0" layoutY="66.0" text="Login" />
+                  <Label layoutX="11.0" layoutY="100.0" text="Senha" />
+                  <Hyperlink layoutX="14.0" layoutY="137.0" text="Esqueci minha Senha" />
+                  <Label fx:id="statusLogin" layoutX="12.0" layoutY="23.0" textFill="RED">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField fx:id="txtNome" layoutX="74.0" layoutY="54.0" prefHeight="25.0" prefWidth="220.0" />
+                  <JFXPasswordField fx:id="txtSenha" layoutX="74.0" layoutY="88.0" prefHeight="25.0" prefWidth="218.0" />
+                  <JFXButton layoutX="179.0" layoutY="132.0" onAction="#btnLogin" prefHeight="33.0" prefWidth="115.0" ripplerFill="#01cd2a" style="-fx-background-color: #33ff00;" text="Acessar">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </Pane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<TabPane prefHeight="366.0" prefWidth="1174.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aplicacao.ControladorTelaUniversidade">
+   <tabs>
+      <Tab text="Universidades Cadastradas">
+         <content>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <GridPane minHeight="106.0" prefHeight="106.0" prefWidth="670.0">
+                     <children>
+                        <JFXTextField fx:id="txtbuscaSigla" prefHeight="25.0" prefWidth="50000.0" GridPane.columnIndex="1" />
+                        <Label alignment="CENTER_RIGHT" prefHeight="15.0" prefWidth="641.0" text="Sigla:  ">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER_RIGHT" prefHeight="15.0" prefWidth="343.0" text="Nome:  " textAlignment="RIGHT" GridPane.columnIndex="2">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <JFXTextField fx:id="txtBuscaNome" GridPane.columnIndex="3" />
+                        <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="711.0" text="Estado:  " textAlignment="RIGHT" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <JFXComboBox fx:id="cbEstados" onAction="#carregaCidades" prefHeight="25.0" prefWidth="822.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="561.0" text="Cidade:  " GridPane.columnIndex="2" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <JFXComboBox fx:id="cbCidade" prefHeight="25.0" prefWidth="610.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                        <JFXButton onAction="#btnBuscar" prefHeight="25.0" prefWidth="585.0" ripplerFill="#006102" style="-fx-background-color: #00ff00;" text="Buscar" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                        <Label fx:id="label1" prefHeight="15.0" prefWidth="202.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                     </children>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="ALWAYS" maxWidth="100.0" minWidth="90.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="10000.0" minWidth="185.0" prefWidth="185.0" />
+                        <ColumnConstraints hgrow="ALWAYS" maxWidth="129.0" minWidth="90.0" prefWidth="123.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="10000.0" minWidth="186.0" prefWidth="192.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="42.0" minHeight="10.0" prefHeight="41.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="48.0" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </GridPane>
+                  <TableView fx:id="tabela1" prefHeight="10000.0" prefWidth="670.0">
+                    <columns>
+                      <TableColumn fx:id="col_id" prefWidth="28.0" text="ID" />
+                      <TableColumn fx:id="col_sigla" prefWidth="47.0" text="Sigla" />
+                        <TableColumn fx:id="col_nome" prefWidth="225.0" text="Nome" />
+                        <TableColumn fx:id="col_estado" prefWidth="95.0" text="Estado" />
+                        <TableColumn fx:id="col_cidade" minWidth="0.0" prefWidth="153.0" text="Cidade" />
+                        <TableColumn fx:id="col_bairro" minWidth="0.0" prefWidth="87.0" text="Bairro" />
+                        <TableColumn fx:id="col_rua" minWidth="0.0" prefWidth="169.0" text="Rua" />
+                        <TableColumn fx:id="col_numero" minWidth="0.0" prefWidth="45.0" text="Nº" />
+                        <TableColumn fx:id="col_complemento" minWidth="0.0" prefWidth="303.0" text="Complemento" />
+                    </columns>
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </TableView>
+               </children>
+            </VBox>
+         </content>
+      </Tab>
+      <Tab text="Cadastrar Novo">
+         <content>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <GridPane prefHeight="200.0" prefWidth="670.0">
+                     <children>
+                        <JFXTextField fx:id="txtSigla" prefHeight="25.0" prefWidth="50000.0" GridPane.columnIndex="1" />
+                        <Label alignment="CENTER_RIGHT" prefHeight="15.0" prefWidth="641.0" text="Sigla:  ">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER_RIGHT" prefHeight="15.0" prefWidth="343.0" text="Nome:  " textAlignment="RIGHT" GridPane.columnIndex="2">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <JFXTextField fx:id="txtNome" GridPane.columnIndex="3" />
+                        <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="711.0" text="Estado:  " textAlignment="RIGHT" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <JFXComboBox fx:id="cbEstados2" onAction="#carregaCidades" prefHeight="25.0" prefWidth="822.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="561.0" text="Cidade:  " GridPane.columnIndex="2" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <JFXComboBox fx:id="cbCidade2" prefHeight="25.0" prefWidth="610.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                        <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="774.0" text="Bairro:  " GridPane.rowIndex="2">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="318.0" text="Rua:  " GridPane.columnIndex="2" GridPane.rowIndex="2">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <JFXTextField fx:id="txtBairro" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="774.0" text="Numero:  " GridPane.rowIndex="3">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="318.0" text="Complemento:  " GridPane.columnIndex="2" GridPane.rowIndex="3">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <JFXTextField fx:id="txtRua" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                        <JFXTextField fx:id="txtNumero" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <JFXTextField fx:id="txtComplemento" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                        <JFXButton onAction="#btnCadastrar" prefHeight="25.0" prefWidth="585.0" ripplerFill="#006102" style="-fx-background-color: #00ff00;" text="Cadastrar" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+                     </children>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="ALWAYS" maxWidth="100.0" minWidth="90.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="10000.0" minWidth="185.0" prefWidth="185.0" />
+                        <ColumnConstraints hgrow="ALWAYS" maxWidth="129.0" minWidth="90.0" prefWidth="123.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="10000.0" minWidth="186.0" prefWidth="192.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </GridPane>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0">
+                     <center>
+                        <Label fx:id="statusGravacao" alignment="CENTER" text="Status da gravaçao!" BorderPane.alignment="CENTER">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </Label>
+                     </center>
+                  </BorderPane>
+               </children>
+            </VBox>
+         </content>
+      </Tab>
+   </tabs>
+</TabPane>

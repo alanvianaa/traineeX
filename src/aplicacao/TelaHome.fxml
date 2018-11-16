@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<FlowPane prefHeight="396.0" prefWidth="507.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aplicacao.ControladorTelaHome">
+   <children>
+      <BarChart fx:id="grafico1" prefHeight="189.0" prefWidth="515.0" title="Universidades Cadastrada por Estado">
+         <xAxis>
+            <CategoryAxis label="Estados" side="BOTTOM" fx:id="x" />
+         </xAxis>
+         <yAxis>
+            <NumberAxis fx:id="y" label="Quantidade" side="LEFT" />
+         </yAxis>
+      </BarChart>
+      <BarChart fx:id="grafico2" prefHeight="189.0" prefWidth="510.0" title="Alunos cadastrados por Estado">
+         <xAxis>
+            <CategoryAxis fx:id="y2" label="Estados" side="BOTTOM" />
+         </xAxis>
+         <yAxis>
+            <NumberAxis label="Quantidade" side="LEFT" fx:id="x2" />
+         </yAxis>
+      </BarChart>
+   </children>
+</FlowPane>
