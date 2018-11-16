@@ -22,6 +22,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import login.ControladorLogin;
 
 
@@ -63,7 +64,8 @@ public class ControladorAplicacao extends ControladorLogin{
 
         status("Bem-Vindo ao Sistema!");
         alteraBoderPaneCenter("/aplicacao/TelaHome.fxml");
-        
+
+  
     }    
     
     public void alteraBoderPaneCenter(String tela){

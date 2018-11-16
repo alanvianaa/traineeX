@@ -12,6 +12,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 
 public class ControladorLogin{
@@ -46,10 +47,11 @@ public class ControladorLogin{
                 Stage stage = new Stage(); 
                 Parent root = FXMLLoader.load(getClass().getResource("/aplicacao/TelaAplicacao.fxml")); 
                 
-                                
+                //stage.initStyle(StageStyle.TRANSPARENT);                
                 Scene scene = new Scene(root); 
                 stage.setScene(scene);
                 stage.show();
+                
                 
                 Main.tela.close();
                 
