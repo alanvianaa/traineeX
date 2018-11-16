@@ -47,7 +47,8 @@ public class ControladorLogin{
                 Stage stage = new Stage(); 
                 Parent root = FXMLLoader.load(getClass().getResource("/aplicacao/TelaAplicacao.fxml")); 
                 
-                //stage.initStyle(StageStyle.TRANSPARENT);                
+                //stage.initStyle(StageStyle.TRANSPARENT); 
+                
                 Scene scene = new Scene(root); 
                 stage.setScene(scene);
                 stage.show();
