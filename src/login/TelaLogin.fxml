@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.*?>
 <?import com.jfoenix.controls.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.shape.*?>
@@ -19,7 +20,7 @@
    <children>
       <BorderPane layoutY="36.0" prefHeight="430.0" prefWidth="696.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
-            <Pane prefHeight="93.0" prefWidth="696.0" style="-fx-background-color: #00cc29;" BorderPane.alignment="CENTER">
+            <Pane prefHeight="93.0" prefWidth="696.0" style="-fx-background-color: #303030;" BorderPane.alignment="CENTER">
                <children>
                   <Label fx:id="label" layoutX="155.0" layoutY="36.0" text="Bem-Vindo ao sistema" textFill="WHITE">
                      <font>
@@ -35,7 +36,7 @@
             </Pane>
          </top>
          <bottom>
-            <Pane prefHeight="40.0" prefWidth="696.0" style="-fx-background-color: #00cc40;" BorderPane.alignment="CENTER" />
+            <Pane prefHeight="40.0" prefWidth="696.0" style="-fx-background-color: #303030;" BorderPane.alignment="CENTER" />
          </bottom>
          <left>
             <Pane prefHeight="297.0" prefWidth="298.0" style="-fx-border-color: #9999; -fx-background-color: #1111;" BorderPane.alignment="CENTER">
@@ -50,21 +51,35 @@
          <center>
             <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label layoutX="14.0" layoutY="66.0" text="Login" />
-                  <Label layoutX="11.0" layoutY="100.0" text="Senha" />
+                  <Label layoutX="61.0" layoutY="70.0" text="Login">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
+                  <Label layoutX="57.0" layoutY="107.0" text="Senha">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
                   <Hyperlink layoutX="14.0" layoutY="137.0" text="Esqueci minha Senha" />
                   <Label fx:id="statusLogin" layoutX="12.0" layoutY="23.0" textFill="RED">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <JFXTextField fx:id="txtNome" layoutX="74.0" layoutY="54.0" prefHeight="25.0" prefWidth="220.0" />
-                  <JFXPasswordField fx:id="txtSenha" layoutX="74.0" layoutY="88.0" prefHeight="25.0" prefWidth="218.0" />
-                  <JFXButton layoutX="179.0" layoutY="132.0" onAction="#btnLogin" prefHeight="33.0" prefWidth="115.0" ripplerFill="#01cd2a" style="-fx-background-color: #33ff00;" text="Acessar">
+                  <JFXTextField fx:id="txtNome" layoutX="127.0" layoutY="54.0" prefHeight="25.0" prefWidth="220.0">
                      <font>
-                        <Font name="System Bold" size="13.0" />
+                        <Font size="18.0" />
+                     </font></JFXTextField>
+                  <JFXPasswordField fx:id="txtSenha" layoutX="128.0" layoutY="91.0" prefHeight="25.0" prefWidth="218.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font></JFXPasswordField>
+                  <JFXButton layoutX="179.0" layoutY="132.0" onAction="#btnLogin" prefHeight="33.0" prefWidth="167.0" ripplerFill="#01cd2a" style="-fx-background-color: #33ff00;" text="Acessar" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
                      </font>
                   </JFXButton>
+                  <FontAwesomeIconView glyphName="USER" layoutX="28.0" layoutY="87.0" size="20" />
+                  <FontAwesomeIconView glyphName="GEAR" layoutX="28.0" layoutY="124.0" size="20" />
                </children>
             </Pane>
          </center>

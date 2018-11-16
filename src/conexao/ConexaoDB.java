@@ -1,6 +1,7 @@
 
 package conexao;
 
+import aplicacao.ControladorAplicacao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -8,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.animation.Animation;
 import objetos.*;
 
 public class ConexaoDB {
@@ -34,9 +36,14 @@ public class ConexaoDB {
             stmt.execute();
             
         } catch (SQLException ex) {
-            System.out.println("Erro de Script SQL");
+ 
+            System.out.println("Erro de Script SQL na Insersão");
+            
             Logger.getLogger(ConexaoDB.class.getName()).log(Level.SEVERE, null, ex);
         }  
+        
+        
+  
     }
     
     public ResultSet buscarQuery(String query){
@@ -49,7 +56,7 @@ public class ConexaoDB {
 
             return rs;
         } catch (SQLException ex) {
-            System.out.println("Erro de Script SQL");
+            System.out.println("Erro de Script SQL na Busca");
             Logger.getLogger(ConexaoDB.class.getName()).log(Level.SEVERE, null, ex);
         }  
         return null;

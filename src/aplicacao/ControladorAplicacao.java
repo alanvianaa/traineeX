@@ -18,6 +18,7 @@ import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
@@ -39,8 +40,10 @@ public class ControladorAplicacao extends ControladorLogin{
     private JFXButton btnCursos;
     @FXML
     private JFXButton btnAlunos;
-   
-  
+    @FXML
+    public Label statusSistema;
+    
+
     @FXML
     public void btnClose(){
         Stage stage = (Stage) boderpane.getScene().getWindow();
@@ -49,12 +52,16 @@ public class ControladorAplicacao extends ControladorLogin{
         stage.close();
     }
     
+    public void status(String status){
+        
+        bolinhaStatus.setFill(javafx.scene.paint.Color.LAWNGREEN);
+        statusSistema.setText(status);
+    }
     
     @Override
     public void initialize() {
 
-        bolinhaStatus.setFill(javafx.scene.paint.Color.GREEN);
-        
+        status("Bem-Vindo ao Sistema!");
         alteraBoderPaneCenter("/aplicacao/TelaHome.fxml");
         
     }    
@@ -69,10 +76,12 @@ public class ControladorAplicacao extends ControladorLogin{
         boderpane.setCenter(root);
     }
     
+    @FXML
     public void btnHome(){
         alteraBoderPaneCenter("/aplicacao/TelaHome.fxml");
     }
     
+    @FXML
     public void btnUniversidade(){
         alteraBoderPaneCenter("/aplicacao/TelaUniversidade.fxml");
     }

@@ -115,6 +115,8 @@ public class ControladorTelaUniversidade implements Initializable {
         //con.gravarUniversidade(uni);
         con.gravarUniversidade(uni);
         statusGravacao.setText(uni.toString());
+        
+        
     }
 
     @FXML
