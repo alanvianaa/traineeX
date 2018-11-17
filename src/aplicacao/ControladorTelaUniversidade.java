@@ -10,17 +10,26 @@ import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import conexao.ConexaoDB;
 import conexao.ListagensDB;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import objetos.*;
 
 /**
@@ -82,6 +91,10 @@ public class ControladorTelaUniversidade implements Initializable {
     private JFXTextField txtbuscaSigla;
     @FXML
     private JFXTextField txtBuscaNome;
+    @FXML
+    private JFXButton btnEditar;
+    @FXML
+    private JFXButton btnExcluir;
        
 
     @Override
@@ -91,7 +104,9 @@ public class ControladorTelaUniversidade implements Initializable {
         cbEstados.setItems(lista.estados());
 
         cbEstados2.setItems(lista.estados());
-
+        
+        btnEditar.setDisable(true);
+        btnExcluir.setDisable(true);
     }
     
     @FXML
@@ -130,15 +145,58 @@ public class ControladorTelaUniversidade implements Initializable {
         col_id.setCellValueFactory(new PropertyValueFactory<>("id"));
         col_sigla.setCellValueFactory(new PropertyValueFactory<>("sigla"));
         col_nome.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        //col_nome.setCellFactory(TextFieldTableCell.forTableColumn());
+        
         col_estado.setCellValueFactory(new PropertyValueFactory<>("estado"));
         col_cidade.setCellValueFactory(new PropertyValueFactory<>("cidade"));
         col_bairro.setCellValueFactory(new PropertyValueFactory<>("bairro"));
         col_rua.setCellValueFactory(new PropertyValueFactory<>("rua"));
         col_numero.setCellValueFactory(new PropertyValueFactory<>("numero"));
         col_complemento.setCellValueFactory(new PropertyValueFactory<>("complemento"));
-
+        
+       
         
     }
 
-    
+    @FXML
+    private void ativaEdicao(){
+        
+        btnEditar.setDisable(false);
+        btnExcluir.setDisable(false);
+    }
+
+    @FXML
+    private void editarUniversidade(ActionEvent event) throws IOException{
+        
+
+      
+            
+            String i = tabela1.getSelectionModel().getSelectedItem().getSigla();
+            //col_sigla.setCellFactory(TextFieldTableCell.forTableColumn());
+            //System.out.println("Hello!->> "+i);
+            
+            //PopupController editar = new PopupController();
+            //editar.alteraLabel(i);
+            
+   
+          
+
+                 
+                Stage stage = new Stage(); 
+                //stage.initStyle(StageStyle.TRANSPARENT);
+                Parent root = FXMLLoader.load(getClass().getResource("/aplicacao/Popup.fxml")); 
+                
+                //stage.initStyle(StageStyle.TRANSPARENT); 
+                
+                Scene scene = new Scene(root); 
+                stage.setScene(scene);
+                stage.show();
+                
+        
+    }
+
+    @FXML
+    private void excluirUniversidade(ActionEvent event) {
+        
+    }
 }

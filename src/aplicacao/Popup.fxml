@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aplicacao.PopupController">
+   <top>
+      <Label alignment="CENTER" prefHeight="53.0" prefWidth="600.0" text="Editar Universidade" BorderPane.alignment="CENTER" />
+   </top>
+   <center>
+      <Label fx:id="label" text="Label" BorderPane.alignment="CENTER" />
+   </center>
+</BorderPane>

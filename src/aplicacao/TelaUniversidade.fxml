@@ -62,7 +62,7 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </padding>
                   </GridPane>
-                  <TableView fx:id="tabela1" prefHeight="10000.0" prefWidth="10000.0">
+                  <TableView fx:id="tabela1" editable="true" onMouseClicked="#ativaEdicao" prefHeight="10000.0" prefWidth="10000.0">
                     <columns>
                       <TableColumn fx:id="col_id" prefWidth="28.0" text="ID" />
                       <TableColumn fx:id="col_sigla" prefWidth="47.0" text="Sigla" />
@@ -88,11 +88,11 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <JFXButton maxHeight="27.0" maxWidth="135.0" minHeight="27.0" minWidth="135.0" onAction="#btnBuscar" prefHeight="27.0" prefWidth="135.0" ripplerFill="#006102" style="-fx-background-color: #428ADD; -fx-border-color: #8888;" text="Editar" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
+                        <JFXButton fx:id="btnEditar" maxHeight="27.0" maxWidth="135.0" minHeight="27.0" minWidth="135.0" onAction="#editarUniversidade" prefHeight="27.0" prefWidth="135.0" ripplerFill="#006102" style="-fx-background-color: #428ADD; -fx-border-color: #8888;" text="Editar" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
                            <font>
                               <Font name="System Bold" size="13.0" />
                            </font></JFXButton>
-                        <JFXButton maxHeight="27.0" maxWidth="135.0" minHeight="27.0" minWidth="135.0" onAction="#btnBuscar" prefHeight="27.0" prefWidth="135.0" ripplerFill="#006102" style="-fx-background-color: #F33132; -fx-border-color: #8888;" text="Excluir" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="RIGHT">
+                        <JFXButton fx:id="btnExcluir" maxHeight="27.0" maxWidth="135.0" minHeight="27.0" minWidth="135.0" onAction="#excluirUniversidade" prefHeight="27.0" prefWidth="135.0" ripplerFill="#006102" style="-fx-background-color: #F33132; -fx-border-color: #8888;" text="Excluir" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="RIGHT">
                            <font>
                               <Font name="System Bold" size="13.0" />
                            </font></JFXButton>
