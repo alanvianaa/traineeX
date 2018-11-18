@@ -13,7 +13,7 @@ import javafx.animation.Animation;
 import objetos.*;
 
 public class ConexaoDB {
-    String servidor="localhost";
+    String servidor="192.168.0.105";
     String nomeBanco="trainee";
     String login="root";
     String senha="1048576";
