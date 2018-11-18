@@ -138,8 +138,7 @@ public class ControladorTelaUniversidade implements Initializable {
     private void btnBuscar(ActionEvent event) {
         
         ListagensDB lista = new ListagensDB();  
-        
-        
+  
         tabela1.setItems(lista.universidades(txtbuscaSigla.getText(),txtBuscaNome.getText(),cbEstados.getValue()));
         
         col_id.setCellValueFactory(new PropertyValueFactory<>("id"));
