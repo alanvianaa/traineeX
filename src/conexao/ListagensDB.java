@@ -35,9 +35,10 @@ public class ListagensDB extends ConexaoDB{
         try {
             while(rs.next()){  
                 
-            Estado estado = new Estado(rs.getString("UF"),rs.getString("e.nome"));
-            Cidade cidade = new Cidade(rs.getString("c.nome"),estado);
-            Endereco endereco = new Endereco(rs.getString("rua"),rs.getString("bairro"),rs.getString("numero"),rs.getString("complemento"),cidade);
+            Estado estado = new Estado(rs.getInt("e.id"),rs.getString("UF"),rs.getString("e.nome"));
+                
+            Cidade cidade = new Cidade(rs.getInt("c.id"),rs.getString("c.nome"),estado);
+            Endereco endereco = new Endereco(rs.getInt("endereco.id"),rs.getString("rua"),rs.getString("bairro"),rs.getString("numero"),rs.getString("complemento"),cidade);
             Universidade uni = new Universidade(rs.getInt("universidade.id"), rs.getString("sigla"),rs.getString("universidade.nome"),endereco);
             
             lista.add(uni);

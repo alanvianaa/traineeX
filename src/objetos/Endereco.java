@@ -1,11 +1,29 @@
 package objetos;
 
 public class Endereco {
+    private int id;
     private String rua;
     private String bairro;
     private String numero;
     private String complemento;
     private Cidade cidade;
+
+    public Endereco(int id, String rua, String bairro, String numero, String complemento, Cidade cidade) {
+        this.id = id;
+        this.rua = rua;
+        this.bairro = bairro;
+        this.numero = numero;
+        this.complemento = complemento;
+        this.cidade = cidade;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public Endereco(String rua, String bairro, String numero, String complemento, Cidade cidade) {
         this.rua = rua;

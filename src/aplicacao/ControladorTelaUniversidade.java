@@ -38,7 +38,7 @@ import objetos.*;
  * @author alan
  */
 public class ControladorTelaUniversidade implements Initializable {
-
+    
     @FXML
     private JFXTextField txtSigla;
     @FXML
@@ -129,7 +129,7 @@ public class ControladorTelaUniversidade implements Initializable {
         
         //con.gravarUniversidade(uni);
         con.gravarUniversidade(uni);
-        statusGravacao.setText(uni.toString());
+        statusGravacao.setText(uni.getSigla()+"-"+uni.getNome()+" Cadastrada com SUCESSO!");
         
         
     }
@@ -166,36 +166,30 @@ public class ControladorTelaUniversidade implements Initializable {
 
     @FXML
     private void editarUniversidade(ActionEvent event) throws IOException{
-        
 
-      
-            
-            String i = tabela1.getSelectionModel().getSelectedItem().getSigla();
-            //col_sigla.setCellFactory(TextFieldTableCell.forTableColumn());
-            //System.out.println("Hello!->> "+i);
-            
-            //PopupController editar = new PopupController();
-            //editar.alteraLabel(i);
-            
-   
-          
-
-                 
-                Stage stage = new Stage(); 
-                //stage.initStyle(StageStyle.TRANSPARENT);
+            Universidade universidade = tabela1.getSelectionModel().getSelectedItem();
+            String i = universidade.getSigla();
+            label1.setText(i);
+            Passagens.uni = universidade;
+                Stage stage = new Stage();
+               
                 Parent root = FXMLLoader.load(getClass().getResource("/aplicacao/Popup.fxml")); 
-                
+                Passagens.stage = stage;      
                 //stage.initStyle(StageStyle.TRANSPARENT); 
-                
                 Scene scene = new Scene(root); 
                 stage.setScene(scene);
+
                 stage.show();
-                
-        
+      
     }
 
     @FXML
     private void excluirUniversidade(ActionEvent event) {
-        
+            Universidade universidade = tabela1.getSelectionModel().getSelectedItem();
+            
+            ConexaoDB con = new ConexaoDB();
+            con.excluirUniversidade(universidade);
+            
+            btnBuscar(event);
     }
 }

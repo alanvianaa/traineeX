@@ -110,7 +110,34 @@ public class ConexaoDB {
         
         
     }
+
+    private void atualizaEndereco(Endereco e){
+        //Atualiza o endereco no banco de dados;
+       
+       String cidade = buscaCidade(e.getCidade());
+       int id = e.getId();
+       
+       String query = "UPDATE endereco SET rua = '"+e.getRua()+"', bairro = '"+e.getBairro()+"', numero = "+e.getNumero()+", complemento = '"+e.getComplemento()+"', cidade_id = "+cidade+" WHERE id = "+e.getId()+";";
+       inserirQuery(query);
+
+    }
     
+    public void atualizarUniversidade(Universidade uni) {
+        atualizaEndereco(uni.getEndereco());
+        
+        String query = "UPDATE universidade SET nome = '"+uni.getNome()+"' WHERE id = "+uni.getId()+";";
+        inserirQuery(query);
+        
+    }
+    
+    public void excluirUniversidade(Universidade uni){
+        
+        String query = "DELETE FROM universidade WHERE id = "+uni.getId()+"";
+        inserirQuery(query);
+        query = "DELETE FROM endereco WHERE id = "+uni.getEndereco().getId()+"";
+        inserirQuery(query);
+        
+    }
     
      
 }

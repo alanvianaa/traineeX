@@ -2,6 +2,9 @@
 package objetos;
 
 public class Cidade {
+    private int id;
+
+
     private String nome;
     private Estado estado;
 
@@ -10,6 +13,20 @@ public class Cidade {
         this.estado = estado;
     }
 
+    public Cidade(int id, String nome, Estado estado) {
+        this.id = id;
+        this.nome = nome;
+        this.estado = estado;
+    }
+    
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     @Override
     public String toString() {
         return "Cidade{" + "nome=" + nome + ", estado=" + estado.toString() + '}';
