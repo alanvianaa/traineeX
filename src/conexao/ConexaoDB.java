@@ -13,7 +13,7 @@ import javafx.animation.Animation;
 import objetos.*;
 
 public class ConexaoDB {
-    String servidor="192.168.0.105";
+    String servidor="localhost";
     String nomeBanco="trainee";
     String login="root";
     String senha="1048576";
@@ -138,6 +138,25 @@ public class ConexaoDB {
         inserirQuery(query);
         
     }
+
+    public void gravarCurso(Curso cur) {
+        String query = "INSERT INTO `curso` (`nome`, `turno`, `universidade_id`) VALUES ('"+cur.getNome()+"', '"+cur.getTurno()+"', "+cur.getUniversidade().getId()+")";
+        
+        inserirQuery(query);
+    }
+
+    public void atualizarCurso(Curso cur) {
+        
+        String query = "UPDATE curso SET nome = '"+cur.getNome()+"', turno = '"+cur.getTurno()+"', universidade_id = "+cur.getUniversidade().getId()+" WHERE id = "+cur.getId()+";";
+        inserirQuery(query);
+        
+    }
     
+    public void excluirCurso(Curso cur){
+
+        String query = "DELETE FROM curso WHERE id = "+cur.getId()+"";
+        inserirQuery(query);
+        
+    }
      
 }

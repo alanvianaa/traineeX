@@ -130,8 +130,6 @@ public class ControladorTelaUniversidade implements Initializable {
         //con.gravarUniversidade(uni);
         con.gravarUniversidade(uni);
         statusGravacao.setText(uni.getSigla()+"-"+uni.getNome()+" Cadastrada com SUCESSO!");
-        
-        
     }
 
     @FXML
@@ -139,7 +137,7 @@ public class ControladorTelaUniversidade implements Initializable {
         
         ListagensDB lista = new ListagensDB();  
   
-        tabela1.setItems(lista.universidades(txtbuscaSigla.getText(),txtBuscaNome.getText(),cbEstados.getValue()));
+        tabela1.setItems(lista.universidades(txtbuscaSigla.getText(),txtBuscaNome.getText(),cbEstados.getValue(),""));
         
         col_id.setCellValueFactory(new PropertyValueFactory<>("id"));
         col_sigla.setCellValueFactory(new PropertyValueFactory<>("sigla"));

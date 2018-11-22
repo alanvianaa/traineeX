@@ -23,8 +23,9 @@ public class Universidade {
 
     @Override
     public String toString() {
-        return "Universidade{" + "id=" + id + ", sigla=" + sigla + ", nome=" + nome + ", \n endereco=" + endereco + '}';
+        return endereco.getCidade().getNome()+"-"+nome;
     }
+    
     public String getRua(){
         return endereco.getRua();
     }

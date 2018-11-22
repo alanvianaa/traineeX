@@ -28,11 +28,11 @@
                <graphic>
                   <FontAwesomeIconView fill="WHITE" glyphName="GRADUATION_CAP" size="15" />
                </graphic></JFXButton>
-            <JFXButton fx:id="btnCursos" alignment="BASELINE_LEFT" prefHeight="40.0" prefWidth="140.0" text="Cursos" textFill="WHITE">
+            <JFXButton fx:id="btnCursos" alignment="BASELINE_LEFT" onAction="#btnCurso" prefHeight="40.0" prefWidth="140.0" text="Cursos" textFill="WHITE">
                <graphic>
                   <FontAwesomeIconView fill="WHITE" glyphName="GET_POCKET" size="15" />
                </graphic></JFXButton>
-            <JFXButton fx:id="btnAlunos" alignment="BASELINE_LEFT" prefHeight="40.0" prefWidth="140.0" text="Alunos" textFill="WHITE">
+            <JFXButton fx:id="btnAlunos" alignment="BASELINE_LEFT" onAction="#btnAluno" prefHeight="40.0" prefWidth="140.0" text="Alunos" textFill="WHITE">
                <graphic>
                   <FontAwesomeIconView fill="WHITE" glyphName="GROUP" size="15" />
                </graphic></JFXButton>
