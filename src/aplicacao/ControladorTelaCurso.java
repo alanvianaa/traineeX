@@ -118,7 +118,7 @@ public class ControladorTelaCurso implements Initializable {
         
         ListagensDB lista = new ListagensDB();  
   
-        tabela1.setItems(lista.cursos(txtbuscaCurso.getText(),cbTurnos.getValue(),cbEstados.getValue()));
+        tabela1.setItems(lista.cursos(txtbuscaCurso.getText(),cbTurnos.getValue(),cbEstados.getValue(),null));
         
         col_id.setCellValueFactory(new PropertyValueFactory<>("id"));
         col_sigla.setCellValueFactory(new PropertyValueFactory<>("sigla"));

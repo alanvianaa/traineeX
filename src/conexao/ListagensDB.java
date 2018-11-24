@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import objetos.Aluno;
 import objetos.Cidade;
 import objetos.Curso;
 import objetos.Endereco;
@@ -134,32 +135,35 @@ public class ListagensDB extends ConexaoDB{
         return null;
     }
     
-    public ObservableList cursos(String txtCurso,String txtTurno, String txtBuscaEstado){
+    public ObservableList cursos(String txtCurso,String txtTurno, String txtBuscaEstado, Universidade universidade){
         //Vai criar os Objetos Universidades buscando as informações no banco de dados e colocar em um ObservableList do JavaFX
         ObservableList<Curso> lista = FXCollections.observableArrayList();
         
-        String bUni = "";
+        String bCur = "";
         if(!txtCurso.equals("")){
-            bUni = "WHERE u.sigla = '"+txtCurso+"'";          
+            bCur = "WHERE u.sigla = '"+txtCurso+"'";          
         }     
         if(txtTurno != null){
-            bUni = "WHERE curso.turno = '"+txtTurno+"'"; 
+            bCur = "WHERE curso.turno = '"+txtTurno+"'"; 
         }
         if(txtBuscaEstado != null){
-            bUni = "WHERE e2.nome = '"+txtBuscaEstado+"'"; 
+            bCur = "WHERE e2.nome = '"+txtBuscaEstado+"'"; 
+        }
+        if(universidade != null){
+            bCur = "WHERE u.nome = '"+universidade.getNome()+"' AND e2.nome = '"+universidade.getEstado()+"' AND c.nome = '"+universidade.getCidade()+"'"; 
+        
         }
         
         
-        
-        String query = "SELECT curso.id,curso.nome,curso.turno,curso.universidade_id FROM curso INNER JOIN universidade u on curso.universidade_id = u.id INNER JOIN endereco e on u.endereco_id = e.id INNER JOIN cidade c on e.cidade_id = c.id INNER JOIN estado e2 on c.estado_id = e2.id "+bUni+";";
+        String query = "SELECT curso.id,curso.nome,curso.turno,curso.universidade_id FROM curso INNER JOIN universidade u on curso.universidade_id = u.id INNER JOIN endereco e on u.endereco_id = e.id INNER JOIN cidade c on e.cidade_id = c.id INNER JOIN estado e2 on c.estado_id = e2.id "+bCur+";";
         ResultSet rs = buscarQuery(query);
         
         try {
             
             while(rs.next()){  
             
-            String i = Integer.toString(rs.getInt("universidade_id"));
-                       
+            String i = Integer.toString(rs.getInt("curso.universidade_id"));
+            System.out.println("Chgou AQUIIII-->"+i);           
             Universidade uni = universidade("","","",i);              
             Curso curso = new Curso(rs.getInt("id"),rs.getString("nome"),rs.getString("turno"),uni);
             
@@ -173,5 +177,96 @@ public class ListagensDB extends ConexaoDB{
         
         return lista;
     }
+    
+    public Curso curso(String idCurso){
+
+        String bCur = "";
+        
+        if(!idCurso.equals("")){
+            bCur = "WHERE curso.id = '"+idCurso+"'"; 
+        }
+
+        String query = "SELECT curso.id,curso.nome,curso.turno,curso.universidade_id FROM curso INNER JOIN universidade u on curso.universidade_id = u.id INNER JOIN endereco e on u.endereco_id = e.id INNER JOIN cidade c on e.cidade_id = c.id INNER JOIN estado e2 on c.estado_id = e2.id "+bCur+";";
+        ResultSet rs = buscarQuery(query);
+        
+        try {
+            
+            while(rs.next()){  
+            
+            String i = Integer.toString(rs.getInt("curso.universidade_id"));
+                       
+            Universidade uni = universidade("","","",i);              
+            Curso curso = new Curso(rs.getInt("id"),rs.getString("nome"),rs.getString("turno"),uni);
+            
+            return curso;
+            
+            }  
+        } catch (SQLException ex) {
+            System.out.println("ERRO!!! -> Bla Bla Bla! ################################################ ");
+        }
+        
+        return null;
+    }
+    
+    public ObservableList alunos(String nome,String cpf,Universidade universidade,Curso cur, String txtBuscaEstado, String txtAno){
+        //Vai criar os Objetos Universidades buscando as informações no banco de dados e colocar em um ObservableList do JavaFX
+        ObservableList<Aluno> lista = FXCollections.observableArrayList();
+        
+        String bAluno = "";
+        
+        if(!nome.equals("")){
+            bAluno = "WHERE aluno.nome = '"+nome+"'";          
+        }
+        
+        if(!cpf.equals("")){
+            bAluno = "WHERE aluno.cpf = '"+cpf+"'";          
+        }
+        
+        if(txtBuscaEstado != null){
+            bAluno = "WHERE e2.nome = '"+txtBuscaEstado+"'"; 
+        }
+        
+        if(universidade != null){
+            bAluno = "WHERE u.id = "+universidade.getId(); 
+        }
+        
+        if(cur != null){
+            bAluno = "WHERE c.id = '"+cur.getId()+"'";          
+        }     
+
+        if(txtAno != null){
+            if(bAluno.equals("")){
+               bAluno = "WHERE aluno.ano_ingresso = '"+txtAno+"'"; 
+            }else{
+                bAluno = bAluno+" AND aluno.ano_ingresso = '"+txtAno+"'"; 
+            }
+             
+        }
+        
+        
+        String query = "select * from aluno inner JOIN curso c on aluno.curso_id = c.id inner join universidade u on c.universidade_id = u.id inner Join endereco e on u.endereco_id = e.id inner join cidade c2 on e.cidade_id = c2.id inner join estado e2 on c2.estado_id = e2.id "+bAluno+";";
+        ResultSet rs = buscarQuery(query);
+        
+        try {
+            
+            while(rs.next()){  
+            
+            String i = Integer.toString(rs.getInt("aluno.curso_id"));              
+            cur = curso(i);              
+            System.out.println("OPAAA Chegou aqui!"); 
+            Aluno aluno = new Aluno(rs.getInt("aluno.id"),rs.getString("aluno.nome"),rs.getString("aluno.cpf"),cur,rs.getInt("aluno.ano_ingresso"));
+            
+            lista.add(aluno);
+            
+            }
+            
+        } catch (SQLException ex) {
+            System.out.println("ERRO AQUI!!! -> Bla Bla Bla! ################################################ ");
+        }
+        
+        return lista;
+    }
+    
+    
     
 }

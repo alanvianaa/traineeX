@@ -65,7 +65,7 @@ public class Curso {
 
     @Override
     public String toString() {
-        return "MEO DEUS que CAUS--> Curso{" + "id=" + id + ", nome=" + nome + ", turno=" + turno + ", universidade=" + universidade + '}';
+        return turno+" - "+nome;
     }
     
     

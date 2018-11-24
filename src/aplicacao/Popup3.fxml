@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefHeight="200.0" prefWidth="801.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aplicacao.Popup3Controller">
+   <children>
+      <Label alignment="CENTER" prefHeight="53.0" prefWidth="10000.0" text="Editar Aluno">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <GridPane minHeight="147.0" prefHeight="147.0">
+         <children>
+            <JFXTextField fx:id="txtNome" prefHeight="25.0" prefWidth="50000.0" GridPane.columnIndex="1" />
+            <Label alignment="CENTER_RIGHT" prefHeight="15.0" prefWidth="641.0" text="Nome:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER_RIGHT" prefHeight="15.0" prefWidth="343.0" text="CPF:" textAlignment="RIGHT" GridPane.columnIndex="2">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="711.0" text="Estado:" textAlignment="RIGHT" GridPane.rowIndex="1">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="txtCPF" GridPane.columnIndex="3" />
+            <JFXComboBox fx:id="cbEstados" onAction="#carregaUniversidades" prefHeight="25.0" prefWidth="822.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="561.0" text="Curso:" GridPane.rowIndex="2">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <JFXComboBox fx:id="cbUniversidades" onAction="#carregaCursos" prefHeight="25.0" prefWidth="10000.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <JFXComboBox fx:id="cbCursos" prefHeight="25.0" prefWidth="610.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <JFXButton onAction="#btnSalvar" prefHeight="25.0" prefWidth="585.0" ripplerFill="#006102" style="-fx-background-color: #00ff00; -fx-border-color: #8888;" text="Salvar Alteraçao" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="3">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </JFXButton>
+            <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="10000.0" text="Universidade:" textAlignment="RIGHT" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="10000.0" text="Ano Ingresso:" textAlignment="RIGHT" GridPane.columnIndex="2" GridPane.rowIndex="2">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <JFXComboBox fx:id="cbAno" prefHeight="25.0" prefWidth="10000.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+         </children>
+         <columnConstraints>
+            <ColumnConstraints hgrow="ALWAYS" maxWidth="100.0" minWidth="90.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="10000.0" minWidth="185.0" prefWidth="185.0" />
+            <ColumnConstraints hgrow="ALWAYS" maxWidth="129.0" minWidth="90.0" prefWidth="123.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="10000.0" minWidth="186.0" prefWidth="192.0" />
+         </columnConstraints>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="42.0" minHeight="10.0" prefHeight="41.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="48.0" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="48.0" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+      </GridPane>
+   </children>
+</VBox>

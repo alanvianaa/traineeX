@@ -158,5 +158,21 @@ public class ConexaoDB {
         inserirQuery(query);
         
     }
-     
+
+    public void excluirAluno(Aluno aluno) {
+        String query = "DELETE FROM aluno WHERE id = "+aluno.getId()+"";
+        inserirQuery(query);
+    } 
+
+    public void gravarAluno(Aluno aluno) {
+        String query = "INSERT INTO `aluno` (`nome`, `cpf`, `curso_id`, `ano_ingresso`) VALUES ('"+aluno.getNome()+"', '"+aluno.getCPF()+"', "+aluno.getCurso().getId()+","+aluno.getAno_ingresso()+")";
+        
+        inserirQuery(query);
+    }
+
+    public void atualizarAluno(Aluno aluno) {
+        String query = " UPDATE aluno SET cpf = '"+aluno.getCPF()+"', curso_id = "+aluno.getCurso().getId()+", ano_ingresso = "+aluno.getAno_ingresso()+", nome = '"+aluno.getNome()+"' WHERE id = "+aluno.getId()+";";
+        
+        inserirQuery(query);
+    }
 }

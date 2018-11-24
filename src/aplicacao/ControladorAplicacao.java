@@ -100,7 +100,7 @@ public class ControladorAplicacao extends ControladorLogin{
 
     @FXML
     private void btnAluno(ActionEvent event) {
-        
+        alteraBoderPaneCenter("/aplicacao/TelaAluno.fxml");
     }
     
     
