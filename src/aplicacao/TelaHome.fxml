@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.chart.*?>
 <?import com.jfoenix.controls.*?>
 <?import java.lang.*?>
@@ -8,23 +11,151 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<FlowPane prefHeight="396.0" prefWidth="507.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aplicacao.ControladorTelaHome">
+<VBox prefHeight="483.0" prefWidth="1090.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aplicacao.TelaHomeController">
    <children>
-      <BarChart fx:id="grafico1" prefHeight="189.0" prefWidth="515.0" title="Universidades Cadastrada por Estado">
-         <xAxis>
-            <CategoryAxis label="Estados" side="BOTTOM" fx:id="x" />
-         </xAxis>
-         <yAxis>
-            <NumberAxis fx:id="y" label="Quantidade" side="LEFT" />
-         </yAxis>
-      </BarChart>
-      <BarChart fx:id="grafico2" prefHeight="189.0" prefWidth="510.0" title="Alunos cadastrados por Estado">
-         <xAxis>
-            <CategoryAxis fx:id="y2" label="Estados" side="BOTTOM" />
-         </xAxis>
-         <yAxis>
-            <NumberAxis label="Quantidade" side="LEFT" fx:id="x2" />
-         </yAxis>
-      </BarChart>
+      <HBox>
+         <children>
+            <BarChart fx:id="grafico1" title="Alunos cadastrados por Estado">
+               <xAxis>
+                  <CategoryAxis fx:id="y2" label="Estados" side="BOTTOM" />
+               </xAxis>
+               <yAxis>
+                  <NumberAxis label="Quantidade" side="LEFT" fx:id="x2" />
+               </yAxis>
+            </BarChart>
+            <BarChart fx:id="grafico2" title="Universidades Cadastradas por Estado">
+               <xAxis>
+                  <CategoryAxis label="Estados" side="BOTTOM" fx:id="x" />
+               </xAxis>
+               <yAxis>
+                  <NumberAxis fx:id="y" label="Quantidade" side="LEFT" />
+               </yAxis>
+            </BarChart>
+            <PieChart fx:id="graficoPizza" />
+         </children>
+      </HBox>
+      <BorderPane prefHeight="10000.0" prefWidth="10000.0">
+         <center>
+            <TableView fx:id="tabela" prefHeight="10000.0" prefWidth="10000.0" BorderPane.alignment="CENTER">
+              <columns>
+                <TableColumn fx:id="col_id" prefWidth="44.0" text="ID" />
+                <TableColumn fx:id="col_ano" prefWidth="79.0" text="Ano" />
+                  <TableColumn fx:id="col_nome" prefWidth="216.0" text="Nome" />
+                  <TableColumn fx:id="col_cpf" prefWidth="157.0" text="CPF" />
+                  <TableColumn fx:id="col_curso" prefWidth="167.0" text="Curso" />
+                  <TableColumn fx:id="col_turno" prefWidth="75.0" text="Truno" />
+                  <TableColumn fx:id="col_universidade" prefWidth="216.0" text="Universidade" />
+                  <TableColumn fx:id="col_estado" prefWidth="100.0" text="Estado" />
+                  <TableColumn fx:id="col_cidade" prefWidth="210.0" text="Cidade" />
+              </columns>
+               <BorderPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </BorderPane.margin>
+            </TableView>
+         </center>
+         <top>
+            <FlowPane prefHeight="33.0" prefWidth="1090.0" BorderPane.alignment="CENTER">
+               <children>
+                  <JFXToggleButton fx:id="tbID" contentDisplay="RIGHT" maxHeight="35.0" minHeight="35.0" onAction="#filtrarColunas" prefHeight="35.0" selected="true" text="ID" />
+                  <JFXToggleButton fx:id="ibAno" contentDisplay="RIGHT" maxHeight="35.0" minHeight="35.0" onAction="#filtrarColunas" prefHeight="35.0" selected="true" text="Ano Ingresso" />
+                  <JFXToggleButton fx:id="tbNome" contentDisplay="RIGHT" maxHeight="35.0" minHeight="35.0" onAction="#filtrarColunas" prefHeight="35.0" selected="true" text="Nome" />
+                  <JFXToggleButton fx:id="tbCpf" contentDisplay="RIGHT" maxHeight="35.0" minHeight="35.0" onAction="#filtrarColunas" prefHeight="35.0" selected="true" text="CPF" />
+                  <JFXToggleButton fx:id="tbCurso" contentDisplay="RIGHT" maxHeight="35.0" minHeight="35.0" onAction="#filtrarColunas" prefHeight="35.0" selected="true" text="Curso" />
+                  <JFXToggleButton fx:id="tbTurno" contentDisplay="RIGHT" maxHeight="35.0" minHeight="35.0" onAction="#filtrarColunas" prefHeight="35.0" selected="true" text="Turno" />
+                  <JFXToggleButton fx:id="tbUniversidade" contentDisplay="RIGHT" maxHeight="35.0" minHeight="35.0" onAction="#filtrarColunas" prefHeight="35.0" selected="true" text="Universidade" />
+                  <JFXToggleButton fx:id="tbEstado" contentDisplay="RIGHT" maxHeight="35.0" minHeight="35.0" onAction="#filtrarColunas" prefHeight="35.0" selected="true" text="Estado" />
+                  <JFXToggleButton fx:id="tbCidade" contentDisplay="RIGHT" maxHeight="35.0" minHeight="35.0" onAction="#filtrarColunas" prefHeight="35.0" selected="true" text="Cidade" />
+               </children>
+            </FlowPane>
+         </top>
+         <left>
+            <VBox prefHeight="10000.0" prefWidth="167.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label alignment="BASELINE_CENTER" prefHeight="28.0" prefWidth="167.0" style="-fx-background-color: #999;" text="Filtro" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="21.0" />
+                     </font>
+                  </Label>
+                  <JFXComboBox fx:id="cbEstado" minHeight="30.0" onAction="#carregaCidade" prefHeight="30.0" prefWidth="10000.0" promptText="Estado" unFocusColor="#000000c1">
+                     <effect>
+                        <Lighting>
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect>
+                  </JFXComboBox>
+                  <JFXComboBox fx:id="cbCidade" minHeight="30.0" onAction="#carregaUniversidade" prefHeight="30.0" prefWidth="10000.0" promptText="Cidade" unFocusColor="#000000c1">
+                     <effect>
+                        <Lighting>
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect>
+                  </JFXComboBox>
+                  <JFXComboBox fx:id="cbUniversidade" minHeight="30.0" onAction="#carregaCursos" prefHeight="30.0" prefWidth="10000.0" promptText="Universidade" unFocusColor="#000000c1">
+                     <effect>
+                        <Lighting>
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect>
+                  </JFXComboBox>
+                  <JFXComboBox fx:id="cbCursos" minHeight="30.0" onAction="#buscaAutomatica" prefHeight="30.0" prefWidth="10000.0" promptText="Curso" unFocusColor="#000000c1">
+                     <effect>
+                        <Lighting>
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect>
+                  </JFXComboBox>
+                  <JFXComboBox fx:id="cbAno" minHeight="30.0" onAction="#buscaAutomatica" prefHeight="30.0" prefWidth="10000.0" promptText="Ano de Ingresso" unFocusColor="#000000c1">
+                     <effect>
+                        <Lighting>
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect>
+                  </JFXComboBox>
+                  <BorderPane prefHeight="10000.0" prefWidth="10000.0">
+                     <bottom>
+                        <Pane prefHeight="51.0" prefWidth="167.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <JFXButton fx:id="btnBuscar" layoutX="24.0" layoutY="12.0" onAction="#buscar" prefHeight="28.0" prefWidth="143.0" ripplerFill="#288522c2" style="-fx-background-color: #00ff00; -fx-border-color: #8888;" text="Buscar" textFill="#464444">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </JFXButton>
+                              <JFXCheckBox fx:id="checkAutomatico" layoutX="-1.0" layoutY="17.0" onAction="#AtivaCheckAutomatico" text=" " />
+                           </children>
+                        </Pane>
+                     </bottom>
+                  </BorderPane>
+               </children>
+               <BorderPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </BorderPane.margin>
+            </VBox>
+         </left>
+      </BorderPane>
    </children>
-</FlowPane>
+</VBox>

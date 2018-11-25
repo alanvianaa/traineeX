@@ -126,7 +126,7 @@ public class ControladorTelaAluno implements Initializable {
         
         ListagensDB lista = new ListagensDB();  
   
-        tabela1.setItems(lista.alunos(txtbuscaNome.getText(),txtBuscaCPF.getText(),cbUniversidades.getValue(),cbCursos.getValue(),cbEstados.getValue(),cbAno.getValue()));
+        tabela1.setItems(lista.alunos(txtbuscaNome.getText(),txtBuscaCPF.getText(),cbUniversidades.getValue(),cbCursos.getValue(),cbEstados.getValue(),null,cbAno.getValue()));
         
         col_id.setCellValueFactory(new PropertyValueFactory<>("id"));
         col_nome.setCellValueFactory(new PropertyValueFactory<>("nome"));

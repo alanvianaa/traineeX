@@ -42,8 +42,7 @@ public class ControladorAplicacao extends ControladorLogin{
     private JFXButton btnCursos;
     @FXML
     private JFXButton btnAlunos;
-    @FXML
-    public Label statusSistema;
+    
     
 
     @FXML
@@ -54,16 +53,10 @@ public class ControladorAplicacao extends ControladorLogin{
         stage.close();
     }
     
-    public void status(String status){
         
-        bolinhaStatus.setFill(javafx.scene.paint.Color.LAWNGREEN);
-        statusSistema.setText(status);
-    }
-    
     @Override
     public void initialize() {
 
-        status("Bem-Vindo ao Sistema!");
         alteraBoderPaneCenter("/aplicacao/TelaHome.fxml");
 
   

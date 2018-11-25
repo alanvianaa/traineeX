@@ -66,6 +66,9 @@ public class Aluno {
     public Universidade getUniversidade(){
         return curso.getUniversidade();
     }
+    public String getNomeUniversidade(){
+        return curso.getNomeUniversidade();
+    }
     
     public String getNomeCurso(){
         return curso.getNome();
@@ -77,6 +80,9 @@ public class Aluno {
     
     public String getEstado(){
         return curso.getUniversidade().getEstado();
+    }
+    public String getCidade(){
+        return curso.getUniversidade().getCidade();
     }
 
     @Override

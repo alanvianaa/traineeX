@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.chart.PieChart;
+import javafx.scene.chart.XYChart;
 import objetos.Aluno;
 import objetos.Cidade;
 import objetos.Curso;
@@ -31,6 +33,38 @@ public class ListagensDB extends ConexaoDB{
         }
         if(!idUni.equals("")){
             bUni = "WHERE universidade.id = '"+idUni+"'"; 
+        }
+
+        String query = "SELECT * FROM universidade inner JOIN endereco on universidade.endereco_id = endereco.id inner join cidade c on endereco.cidade_id = c.id inner join estado e on c.estado_id = e.id "
+                +bUni+";";
+        ResultSet rs = buscarQuery(query);
+        
+        try {
+            while(rs.next()){  
+                
+            Estado estado = new Estado(rs.getInt("e.id"),rs.getString("UF"),rs.getString("e.nome"));
+                
+            Cidade cidade = new Cidade(rs.getInt("c.id"),rs.getString("c.nome"),estado);
+            Endereco endereco = new Endereco(rs.getInt("endereco.id"),rs.getString("rua"),rs.getString("bairro"),rs.getString("numero"),rs.getString("complemento"),cidade);
+            Universidade uni = new Universidade(rs.getInt("universidade.id"), rs.getString("sigla"),rs.getString("universidade.nome"),endereco);
+            
+            lista.add(uni);
+            System.out.println(uni);
+            }
+        } catch (SQLException ex) {
+            System.out.println("ERRO!!! -> Bla Bla Bla! ################################################ ");
+        }
+        
+        return lista;
+    }
+    public ObservableList universidades(String txtEstado,String txtCidade){
+        //Vai criar os Objetos Universidades buscando as informações no banco de dados e colocar em um ObservableList do JavaFX
+        ObservableList<Universidade> lista = FXCollections.observableArrayList();
+        
+        String bUni = "WHERE e.nome = '"+txtEstado+"'";
+
+        if(txtCidade != null){
+            bUni = "WHERE e.nome = '"+txtEstado+"' AND c.nome = '"+txtCidade+"'"; 
         }
 
         String query = "SELECT * FROM universidade inner JOIN endereco on universidade.endereco_id = endereco.id inner join cidade c on endereco.cidade_id = c.id inner join estado e on c.estado_id = e.id "
@@ -208,7 +242,7 @@ public class ListagensDB extends ConexaoDB{
         return null;
     }
     
-    public ObservableList alunos(String nome,String cpf,Universidade universidade,Curso cur, String txtBuscaEstado, String txtAno){
+    public ObservableList alunos(String nome,String cpf,Universidade universidade,Curso cur, String txtBuscaEstado,String txtCidade, String txtAno){
         //Vai criar os Objetos Universidades buscando as informações no banco de dados e colocar em um ObservableList do JavaFX
         ObservableList<Aluno> lista = FXCollections.observableArrayList();
         
@@ -223,7 +257,15 @@ public class ListagensDB extends ConexaoDB{
         }
         
         if(txtBuscaEstado != null){
-            bAluno = "WHERE e2.nome = '"+txtBuscaEstado+"'"; 
+                bAluno = "WHERE e2.nome = '"+txtBuscaEstado+"'";    
+        }
+        
+        if(txtCidade != null){
+            if(bAluno.equals("")){
+                bAluno = "WHERE c2.nome = '"+txtCidade+"'"; 
+            }else{
+                bAluno = bAluno+" AND c2.nome = '"+txtCidade+"'"; 
+            }
         }
         
         if(universidade != null){
@@ -233,7 +275,7 @@ public class ListagensDB extends ConexaoDB{
         if(cur != null){
             bAluno = "WHERE c.id = '"+cur.getId()+"'";          
         }     
-
+        
         if(txtAno != null){
             if(bAluno.equals("")){
                bAluno = "WHERE aluno.ano_ingresso = '"+txtAno+"'"; 
@@ -267,6 +309,48 @@ public class ListagensDB extends ConexaoDB{
         return lista;
     }
     
+    public ObservableList pizza(){
+        
+        ObservableList<PieChart.Data> dadosPizza = FXCollections.observableArrayList();
+        
+        String query = "SELECT c.nome, COUNT(c.nome) as qtd from aluno inner join curso c on aluno.curso_id = c.id group by c.nome;";
+        ResultSet rs = buscarQuery(query);
+        
+        try {
+            
+            while(rs.next()){ 
+                PieChart.Data dados = new PieChart.Data(rs.getString("nome"), rs.getInt("qtd"));
+                dadosPizza.add(dados);
+            }
+            return dadosPizza;
+        }catch (SQLException ex) {
+            System.out.println("ERRO!!! -> Bla Bla Bla! ################################################ ");
+        }
+            
+        return null;
+    }
     
+    public XYChart.Series grafico(int i){
+        
+        XYChart.Series set1 = new XYChart.Series<>();
+        
+        String query;
+        if(i==1)
+            query = "select e2.UF, COUNT(e2.UF) as qtd  from aluno inner join curso c on aluno.curso_id = c.id inner join universidade u on c.universidade_id = u.id inner join endereco e on u.endereco_id = e.id inner join cidade c2 on e.cidade_id = c2.id inner join estado e2 on c2.estado_id = e2.id group by e2.UF;";
+        else
+            query = "select e2.UF, COUNT(e2.UF) as qtd  from universidade u inner join endereco e on u.endereco_id = e.id inner join cidade c2 on e.cidade_id = c2.id inner join estado e2 on c2.estado_id = e2.id group by e2.UF;";
+        ResultSet rs = buscarQuery(query);
+        
+        try {
+            while(rs.next()){ 
+                set1.getData().add(new XYChart.Data(rs.getString("UF"),rs.getInt("qtd")));  
+            }
+            return set1;
+        }catch (SQLException ex) {
+            System.out.println("ERRO!!! -> Bla Bla Bla! ################################################ ");
+        }
+        
+        return null;
+    }
     
 }

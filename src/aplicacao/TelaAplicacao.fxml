@@ -16,7 +16,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane fx:id="boderpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="422.0" prefWidth="812.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aplicacao.ControladorAplicacao">
+<BorderPane fx:id="boderpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="393.0" prefWidth="820.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aplicacao.ControladorAplicacao">
    <left>
       <VBox prefHeight="397.0" prefWidth="140.0" style="-fx-background-color: #303030;" BorderPane.alignment="CENTER">
          <children>
@@ -42,27 +42,4 @@
    <center>
       <Pane prefHeight="437.0" prefWidth="574.0" style="-fx-background-color: #4444;" BorderPane.alignment="CENTER" />
    </center>
-   <top>
-      <BorderPane prefHeight="11.0" prefWidth="812.0" BorderPane.alignment="CENTER">
-         <right>
-            <JFXButton buttonType="RAISED" onAction="#btnClose" ripplerFill="RED" text="Fechar" BorderPane.alignment="CENTER" />
-         </right>
-         <left>
-            <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-               <children>
-                  <Circle fx:id="bolinhaStatus" fill="DODGERBLUE" radius="9.0" stroke="TRANSPARENT" strokeType="INSIDE">
-                     <HBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </HBox.margin>
-                  </Circle>
-                  <Label fx:id="statusSistema" prefHeight="24.0" prefWidth="162.0" text="Label">
-                     <HBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </HBox.margin>
-                  </Label>
-               </children>
-            </HBox>
-         </left>
-      </BorderPane>
-   </top>
 </BorderPane>

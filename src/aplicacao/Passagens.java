@@ -7,7 +7,7 @@ import objetos.Curso;
 import objetos.Universidade;
 
 
-public class Passagens {
+public class Passagens {   
     public static Universidade uni;
     public static Stage stage;
     

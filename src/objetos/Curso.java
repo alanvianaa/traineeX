@@ -34,6 +34,9 @@ public class Curso {
     public String getEstado(){
         return universidade.getEndereco().getCidade().getEstado().getNome();
     }
+    public String getCidade(){
+        return universidade.getEndereco().getCidade().getNome();
+    }
     
     public String getSigla(){
         return universidade.getSigla();

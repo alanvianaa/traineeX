@@ -80,6 +80,8 @@ public class ControladorTelaCurso implements Initializable {
     private JFXComboBox<String> cbTurnos;
     @FXML
     private TableColumn<?, ?> col_estado;
+    @FXML
+    private TableColumn<?, ?> col_cidade;
    
 
     
@@ -124,6 +126,7 @@ public class ControladorTelaCurso implements Initializable {
         col_sigla.setCellValueFactory(new PropertyValueFactory<>("sigla"));
         col_estado.setCellValueFactory(new PropertyValueFactory<>("estado"));
         col_universidade.setCellValueFactory(new PropertyValueFactory<>("nomeUniversidade"));
+        col_cidade.setCellValueFactory(new PropertyValueFactory<>("cidade"));
         //col_nome.setCellFactory(TextFieldTableCell.forTableColumn());
         
         col_curso.setCellValueFactory(new PropertyValueFactory<>("nome"));

@@ -68,6 +68,7 @@
                         <TableColumn fx:id="col_estado" prefWidth="95.0" text="Estado" />
                       <TableColumn fx:id="col_sigla" prefWidth="122.0" text="Sigla" />
                         <TableColumn fx:id="col_universidade" prefWidth="300.0" text="Universidade" />
+                        <TableColumn fx:id="col_cidade" prefWidth="75.0" text="Cidade" />
                         <TableColumn fx:id="col_curso" prefWidth="319.0" text="Curso" />
                         <TableColumn fx:id="col_turno" minWidth="0.0" prefWidth="127.0" text="Turno" />
                         <TableColumn fx:id="col_qtdAlunos" minWidth="0.0" prefWidth="106.0" text="Qtd Alunos" />
