@@ -38,8 +38,8 @@ public class ControladorLogin{
         
         ConexaoDB con = new ConexaoDB();
         Usuario user = new Usuario();
-        //Boolean validou = user.autenticacao(txtNome.getText(),txtSenha.getText());
-        Boolean validou = true;
+        Boolean validou = user.autenticacao(txtNome.getText(),txtSenha.getText());
+        //Boolean validou = true;
         
         
         if(validou == true){
