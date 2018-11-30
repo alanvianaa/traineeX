@@ -2,4 +2,4 @@
 Sistema TraineeX - Projeto final POO - UFG
 
 
-<img src="https://www.aprenderexcel.com.br//imagens/post/385/2901-1.jpg" alt="My cool logo"/>
+<img src="https://raw.githubusercontent.com/alanvianaa/traineeX/master/Documenta%C3%A7%C3%A3o/tela_home.png" />
