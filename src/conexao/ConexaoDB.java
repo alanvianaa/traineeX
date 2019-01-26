@@ -16,7 +16,7 @@ public class ConexaoDB {
     String servidor="localhost";
     String nomeBanco="trainee";
     String login="root";
-    String senha="1048576";
+    String senha="umasenha132";
     //Connection con;
     
     public Connection conectar(){
